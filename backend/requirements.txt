@@ -1,8 +1,13 @@
 fastapi
 uvicorn
-groq
-python-dotenv
 python-multipart
-pypdf
-sentence-transformers
+python-dotenv
+groq
+pymupdf
 faiss-cpu
+numpy
+sentence-transformers
+langchain
+langchain-community
+langchain-groq
+langchain-huggingface
