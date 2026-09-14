@@ -5,10 +5,12 @@ DATABASE = "chatbot.db"
 
 
 def get_connection():
-
     connection = sqlite3.connect(DATABASE)
 
     connection.row_factory = sqlite3.Row
+
+    # Enable foreign key constraints
+    connection.execute("PRAGMA foreign_keys = ON")
 
     return connection
 
@@ -16,7 +18,6 @@ def get_connection():
 def create_tables():
 
     connection = get_connection()
-
     cursor = connection.cursor()
 
     # Chats table
@@ -39,9 +40,9 @@ def create_tables():
 
             FOREIGN KEY (chat_id)
             REFERENCES chats(id)
+            ON DELETE CASCADE
         )
     """)
 
     connection.commit()
-
     connection.close()
